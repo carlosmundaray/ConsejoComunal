@@ -38,8 +38,15 @@ Route::group(['middleware' => 'web'], function () {
   return $procesos->lists('parroquia', 'id');
   });
   
-Route::get('reporte/socio_economico', 'ReporteController@socio_economico');
+Route::get('reporte/socio_economico/{id}', 'ReporteController@socio_economico');
 
   
   
   Route::post('censo/grupo', 'CensoController@grupo_familiar_store');
+  Route::get('reporte', 'ReporteController@index');
+  Route::get('reporte/constancia_residencia/{id}', 'ReporteController@constanciaderesidencia');
+  Route::get('reporte/aval/{id}', 'ReporteController@aval');
+  Route::get('reporte/aval/{id}', 'ReporteController@aval');
+  Route::get('reporte/declaracionjurado/{id}', 'ReporteController@declaracionjurado');
+  Route::get('reporte/cartabuenaconducta/{id}', 'ReporteController@cartabuenaconducta');
+

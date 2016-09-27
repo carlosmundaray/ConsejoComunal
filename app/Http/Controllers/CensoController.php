@@ -135,7 +135,7 @@ DB::statement("CREATE TABLE `hola` (
             
             
             DB::insert("INSERT INTO `grupo_familials`(`id`, `cedula`, `name`, `fecha_nac`, `sexo`, `discapasidad`, `tipo_discapasidad`, `embarazo_templano`, `parentesco`, `grado_instrucion`, `profesion`, `pensionado`, `ingreso_mensual`, `censos_id`)  
-            SELECT `id`, `cedula`, `name`, `fecha_nac`, `sexo`, `discapasidad`, `tipo_discapasidad`, `embarazo_templano`, `parentesco`, `grado_instrucion`, `profesion`, `pensionado`, `ingreso_mensual`, ".$censo->id." as censos_id FROM `temp_familia_logs` WHERE 1");
+            SELECT null as `id`, `cedula`, `name`, `fecha_nac`, `sexo`, `discapasidad`, `tipo_discapasidad`, `embarazo_templano`, `parentesco`, `grado_instrucion`, `profesion`, `pensionado`, `ingreso_mensual`, ".$censo->id." as censos_id FROM `temp_familia_logs` WHERE 1");
             DB::commit();
 
         } catch (Exception $e) {
@@ -168,7 +168,7 @@ DB::statement("CREATE TABLE `hola` (
     public function edit($id)
     {   
 
-
+    DB::statement("TRUNCATE TABLE temp_familia_logs");
     $estados = Estados::all();
     $censos = DB::table('censos')
             ->join('censos_academico_laborals', 'censos.id', '=', 'censos_academico_laborals.censos_id')
@@ -255,10 +255,18 @@ DB::statement("CREATE TABLE `hola` (
                 'sector'         => $request['sector'],
                 'direccion'      => $request['direccion']
             ]);
+
+            DB::insert("INSERT INTO `grupo_familials`(`id`, `cedula`, `name`, `fecha_nac`, `sexo`, `discapasidad`, `tipo_discapasidad`, `embarazo_templano`, `parentesco`, `grado_instrucion`, `profesion`, `pensionado`, `ingreso_mensual`, `censos_id`)  
+            SELECT null as id, `cedula`, `name`, `fecha_nac`, `sexo`, `discapasidad`, `tipo_discapasidad`, `embarazo_templano`, `parentesco`, `grado_instrucion`, `profesion`, `pensionado`, `ingreso_mensual`, ".$id." as censos_id FROM `temp_familia_logs` WHERE 1");
+
+
+
+
+
+
             $censo->save();
             $censos_academico->save();
             $censos_comunidad->save();
-
 
 
        return redirect('/censo');

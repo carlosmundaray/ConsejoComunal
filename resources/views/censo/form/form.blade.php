@@ -248,7 +248,7 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-          <table id="example1" class="table table-bordered table-striped">
+          <table id="example1" class=" table table-bordered  display responsive no-wrap" width="100%">
             <thead>
             <tr>
               <th>Apellidos y Nombres</th>
@@ -261,7 +261,6 @@
               <th>Profesion</th>
               <th>Pensionado</th>
               <th>Ingreso Mensual</th>
-              <th>Action</th>
             </tr>
             </thead>
             <tbody>
@@ -277,7 +276,6 @@
                    <td>{{ $familia->profesion }}</td>
                    <td>{{ $familia->pensionado }}</td>
                    <td>{{ $familia->ingreso_mensual }}</td>
-		           <td></td>
                  </tr>
      			@endforeach
 

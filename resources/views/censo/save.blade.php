@@ -4,19 +4,19 @@
 	Registro de Usuario
 @endsection
 @section('ajax-css')
-<!-- daterange picker -->
- <!--link rel="stylesheet" href="{{ asset('/plugins/daterangepicker/daterangepicker.css')}}">
+<!-- Daterange picker -->
+<link rel="stylesheet" href="{{ asset('/plugins/daterangepicker/daterangepicker-bs3.css') }}">
  <!-- bootstrap datepicker -->
  <link rel="stylesheet" href="{{ asset('/plugins/datepicker/datepicker3.css')}}">
  <!-- iCheck for checkboxes and radio inputs -->
  <link rel="stylesheet" href="{{ asset('/plugins/iCheck/all.css')}}">
  <!-- Select2 -->
  <link rel="stylesheet" href="{{ asset('/plugins/select2/select2.min.css')}}">
+ <!-- DataTables -->
+<link href="{{ asset('/plugins/datatables/dataTables.bootstrap.css') }}" rel="stylesheet" type="text/css" />
  <style type="text/css">
     .datepicker {z-index: 1151 !important;}
  </style>
- <!-- DataTables -->
-<link href="{{ asset('/plugins/datatables/dataTables.bootstrap.css') }}" rel="stylesheet" type="text/css" />
 @endsection
 @section('main-content')
 <div class="box box-primary">
@@ -229,8 +229,7 @@ $("#buttonfamilia").click(function() {
 	   row.parentesco,
 	   row.profesion,
 	   row.pensionado,
-	   row.ingreso_mensual,
-	   "<a href='javascript:void(0)' data-id='"+row.id+"' id='h' class='btn btn-danger btn-delete'>Eliminar</a>"
+	   row.ingreso_mensual
    ]).draw( false );
    }		
 	});

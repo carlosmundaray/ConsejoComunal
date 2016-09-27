@@ -28,7 +28,7 @@
     <div class="col-xs-12">
       <div class="box">
         <div class="box-header">
-          <h3 class="box-title">Consulta General</h3>
+          <h3 class="box-title">Consulta Reporte General</h3>
         </div>
         <!-- /.box-header -->
         <div class="box-body">
@@ -41,9 +41,7 @@
               <th>Fecha de nacimiento</th>
               <th>Sexo</th>
               <th>Estado Civil</th>
-              <th>Telefono Cedular</th>
-              <th>Correo Electronico</th>
-			  <th>Action</th>
+			        <th>Action</th>
             </tr>
             </thead>
             <tbody>
@@ -55,15 +53,24 @@
               <td>{{ $censo->fecha_nac }}</td>
               <td>{{ $censo->sexo }}</td>
               <td>{{ $censo->estado_civil }}</td>
-              <td>{{ $censo->telf_celular }}</td>
-              <td>{{ $censo->email }}</td>
 
 			  <td>
-				 {!! Form::hidden('id', $censo->id, array('placeholder' => 'id', 'id'=>'id')) !!}
-				 {!! link_to_route('censo.edit', $title = 'Modificar', $parameters = $censo->id, $attributes = ['class'=>'btn btn-default btn-xs purple'])!!} &#160;
-				 {!! Form::open(array('route' => array('censo.destroy', $censo->id), 'method' => 'DELETE', 'role' => 'form', 'id' => 'form-delete')) !!}
-				 {!! Form::submit('Eliminar', ['class' => 'btn btn-danger btn-xs']) !!}
-				 {!! Form::close() !!}			 
+
+
+  
+<div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Reportes
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu">
+
+    <li><a href="{{url('/reporte/aval',$censo->id) }}">Aval</a></li>
+    <li><a href="{{url('/reporte/cartabuenaconducta',$censo->id) }}">Carta de buena conducta</a></li>
+    <li><a href="{{url('/reporte/constancia_residencia',$censo->id) }}">Carta Residencia</a></li>
+    <li><a href="{{url('/reporte/declaracionjurado',$censo->id) }}">Declaracion jurado</a></li>
+    <li><a href="{{url('/reporte/socio_economico',$censo->id) }}">Planilla Censo</a></li>
+  </ul>
+</div>
+		 
             </tr>
 			@endforeach
             </tbody>
@@ -75,8 +82,6 @@
               <th>Fecha de nacimiento</th>
               <th>Sexo</th>
               <th>Estado Civil</th>
-              <th>Telefono Cedular</th>
-              <th>Correo Electronico</th>
               <th>Action</th>
             </tr>
             </tfoot>
